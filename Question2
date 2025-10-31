@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { transition: background-color 0.3s; }
+        .light { background: #fff; color: #000; }
+        .dark { background: #333; color: #fff; }
+        .metric { margin-bottom: 20px; }
+        @media (max-width: 768px) { .row > div { margin-bottom: 20px; } }
+    </style>
+</head>
+<body class="light">
+    <header class="p-3 bg-primary text-white">
+        <div class="container">
+            <h1>Employee Performance Dashboard</h1>
+            <button id="themeToggle" class="btn btn-light">Switch to Dark Theme</button>
+        </div>
+    </header>
+    <main class="container mt-4">
+        <section class="row">
+            <div class="col-md-4">
+                <div class="metric">
+                    <h3>Sales Performance</h3>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 75%"></div>
+                    </div>
+                    <p>75% of target achieved.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric">
+                    <h3>Productivity</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: 90%"></div>
+                    </div>
+                    <p>90% efficiency.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="metric">
+                    <h3>Customer Satisfaction</h3>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" style="width: 60%"></div>
+                    </div>
+                    <p>60% rating.</p>
+                </div>
+            </div>
+        </section>
+        <section class="mt-4">
+            <button id="togglePanel" class="btn btn-secondary">Toggle Details</button>
+            <div id="detailsPanel" class="mt-3 p-3 bg-light" style="display: none;">
+                <p>Detailed metrics and filters here. Use dropdowns for filtering.</p>
+            </div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Theme switching with DOM manipulation
+            $('#themeToggle').on('click', function() {
+                $('body').toggleClass('light dark');
+                $(this).text($('body').hasClass('dark') ? 'Switch to Light Theme' : 'Switch to Dark Theme');
+            });
+            // jQuery for smooth panel toggle
+            $('#togglePanel').on('click', function() {
+                $('#detailsPanel').slideToggle();
+            });
+        });
+    </script>
+</body>
+</html>
